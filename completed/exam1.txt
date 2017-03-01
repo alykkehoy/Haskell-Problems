@@ -1,0 +1,63 @@
+lamda calculus
+  -determin if 2 equsons are alpha equivalent
+    -var names different, but everything else the same
+    -names dont matter
+    -only bound vars can be changed
+    -all alpha equivalent:
+      -x.xy -> a.ay -> b.by
+    -not alpha equivalent:
+      -x.xy != a.ya
+  -in normal form
+    -x.xy
+    -no possible reductions
+    -(x.xy)z -> zy
+    -(a.aba)(x.zx)y -> ((x.zx)b(x.zx))y -> (zb(x.zx))y
+    -(x.y.xy)y(z.xz) -> (x.y`.xy)y(z.xz) -> (y`.yy`)(z.xz) -> y(z.xz)
+  -combinator?
+    -no free variables
+  -free vs bound variables
+    -free: dont appear in the head
+    -bound: appear in the head
+  -beta reduction / divergance
+    -divergance: keep going through same forms
+
+expressions
+  -look at haskell expression for type / result
+    -preccidence / associativity
+    -given an expression -> prenthisize it
+      -f 5 * 10 - 4 / 2 -> (((f 5) * 10) - (4 / 2))
+    -determin value of expression or if 2 expressions have the same value
+    -operator vs function
+      -operators are infix by default
+      -functions are prefix by default
+      -operators -> set symbols
+      -functions -> any name no symbols
+    -redex
+      -reduced expression
+    -partial application
+      -partial applied operator: Section
+        -left form
+        -right form
+      -(2 *) :: Num a => a -> a
+      -(* 2) :: Num a => a -> a
+    -define types
+      -given an expression/function define type
+      -given a type write an expressions or function that has that type
+    -function composition
+
+-eq
+-ord
+-num
+-show
+
+-patterns
+-guards
+-if then else
+
+-point free style
+  -only right most symbol
+  -factor it out
+  -no param names
+
+  3x5 index
+  hand written
