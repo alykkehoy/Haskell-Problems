@@ -1,1 +1,0 @@
-# Kattis-Haskell-Problems
