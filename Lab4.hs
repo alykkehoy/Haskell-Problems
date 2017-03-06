@@ -2,7 +2,7 @@ import Data.Char
 
 eftBool :: Bool -> Bool -> [Bool]
 eftBool False True = [False, True]
-eftBool Fasle False = [False]
+eftBool False False = [False]
 eftBool True True = [True]
 eftBool True False = []
 
@@ -28,6 +28,12 @@ capFirst (x:xs) = toUpper x : xs
 capFirst' :: String -> String
 capFirst' [] = []
 capFirst' (x:xs) = toUpper x : capFirst' xs
+
+capHead :: String -> Char
+capHead (x:xs) = toUpper x
+
+capHead' :: String -> Char
+capHead' = toUpper . head
 
 main =
   putStrLn(filterString "HbEfLrLxO")
