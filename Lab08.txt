@@ -1,0 +1,57 @@
+(++).1  [] ++ ys = ys
+(++).2 (x:xs) ++ ys = x : (xs ++ ys)
+
+(++).indent  xs ++ [] = xs
+(++).assoc xs ++ (ys ++ zs) = (xs ++ ys) ++ zs
+
+foldr.1  foldr _ y [] = y
+foldr.2  foldr g y (x:xs) = g x foldr g y xs
+
+concat.1  concat x = foldr (++) [] x
+
+map.1  map g [] = []
+map.2  map g (x:xs) = g x : map g xs
+
+prove that:
+1. concat [] = []
+2. concat (x:xs) = x ++ concat xs
+3. distributivity of map over (++). That is, map g (xs ++ ys) = map g xs ++ map g ys
+
+1. concat [] = []
+    by concat 1
+foldr (++) [] [] = []
+    by foldr 1
+[] = []
+
+2. concat (x:xs) = x ++ concat xs
+    by concat 1
+foldr (++) [] (x:xs) = concat xs
+    by concat 1
+foldr (++) [] (x:xs) = x ++ foldr (++) [] xs
+    by infix to prefix
+foldr (++) [] (x:xs) = (++) x foldr (++) [] xs
+    by foldr 2
+foldr (++) [] (x:xs) = foldr (++) [] (x:xs)
+
+3. map g (xs ++ ys) = map g xs ++ map g ys
+Base case, xs = []:
+map g ([] ++ ys) = map g [] ++ map g ys
+    by (++).1
+map g ys = map g [] ++ map g ys
+    by map.1
+map g ys = map g ys
+
+Inductive
+if map g (xs + ys) = map g xs ++ map g ys is True then,
+
+map g (x:xs + ys) = map g x:xs ++ map g ys
+    by (++).2
+map g x:(xs ++ ys) = map g x:xs ++ map g ys
+    by map.2
+g x : map (xs ++ ys) = map g x:xs ++ map g ys
+    by Inductive
+g x : (map g xs ++ map g ys) = map g x:xs ++ map g ys
+    by (++).2
+g x : map g xs ++ map g ys = map g x:xs ++ map g ys
+    by map.2
+g x : map g xs ++ map g ys = g x : map g xs ++ map g ys
