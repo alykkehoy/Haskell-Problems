@@ -37,3 +37,13 @@ data MTGCard = MTGCard {
   power :: Int,
   toughness :: Int
   }
+
+class monoid m where
+  mempty :: m
+  mapped :: m -> m -> m
+  mconcat :: [m] -> m
+
+--laws:
+--mempty 'mappend' x = x      left-identity
+--x 'mappend' mempty = x      right-identity
+--
